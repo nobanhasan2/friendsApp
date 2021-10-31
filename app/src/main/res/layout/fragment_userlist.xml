@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.friendsapp.core.platform.BaseViewModel" />
+        <variable
+            name="navigator"
+            type="com.example.friendsapp.core.navigation.Navigator" />
+
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rv_user"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+   </androidx.recyclerview.widget.RecyclerView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
