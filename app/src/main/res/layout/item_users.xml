@@ -4,7 +4,13 @@
 
     <data>
         <import type="android.view.View" />
+        <variable
+            name="ClickListener"
+            type="com.example.friendsapp.features.home.grid.ItemClickListener" />
 
+        <variable
+            name="navigator"
+            type="com.example.friendsapp.core.navigation.Navigator" />
         <variable
             name="user"
             type="com.example.friendsapp.features.home.model.Results" />
@@ -14,14 +20,15 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card"
         android:layout_width="match_parent"
         android:padding="5dp"
+
         android:layout_margin="10dp"
         android:elevation="5dp"
         android:layout_height="200dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -38,7 +45,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@{user.name.first + ' '+ user.name.last}"

@@ -1,4 +1,12 @@
 package com.example.friendsapp.features.details
 
-class DetailsViewModel {
+import com.example.friendsapp.core.platform.BaseViewModel
+import android.content.Intent
+import android.net.Uri
+
+
+
+class DetailsViewModel : BaseViewModel() {
+
+
 }

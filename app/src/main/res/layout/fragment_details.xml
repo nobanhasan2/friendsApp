@@ -1,6 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.friendsapp.core.platform.BaseViewModel" />
+        <variable
+            name="navigator"
+            type="com.example.friendsapp.core.navigation.Navigator" />
+        <variable
+            name="user"
+            type="com.example.friendsapp.features.home.model.Results" />
+
+    </data>
+   <ScrollView
+       android:layout_width="match_parent"
+       android:background="@color/amber_50"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@color/amber_50"
+           android:orientation="vertical">
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="300dp">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="280dp"
+                   android:background="@drawable/gradientbackground"
+                   android:orientation="vertical">
+
+                   <ImageView
+                       android:layout_width="150dp"
+                       android:layout_height="150dp"
+                       android:layout_gravity="center_horizontal"
+                       android:layout_marginTop="45dp"
+                       app:image="@{user.picture.large}" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_horizontal"
+                       android:layout_marginTop="10dp"
+                       android:text="@{user.name.first + ' '+ user.name.last}"
+                       android:textColor="#fff"
+                       android:textSize="21sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_horizontal"
+                       android:layout_marginTop="10dp"
+                       android:text="@{user.location.city +','+ user.location.state +','+user.location.country}"
+                       android:textColor="#fff"
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+               </LinearLayout>
+           </RelativeLayout>
+
+           <LinearLayout
+               android:layout_width="360dp"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:orientation="vertical">
+
+               <LinearLayout
+                   android:id="@+id/ll_email"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:paddingLeft="25dp">
+                   <ImageView
+                       android:layout_width="30dp"
+                       android:layout_height="30dp"
+                       android:src="@drawable/ic_baseline_email_24"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_vertical"
+                       android:paddingLeft="20dp"
+                       android:text="@{user.email}"
+                       android:textStyle="bold" />
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="25dp"
+                   android:orientation="horizontal"
+                   android:paddingLeft="25dp">
+                   <ImageView
+                       android:layout_width="30dp"
+                       android:layout_height="30dp"
+                       android:src="@drawable/ic_baseline_call_24"/>
+                   <TextView
+                       android:layout_width="wrap_content"
+
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_vertical"
+                       android:paddingLeft="20dp"
+                       android:text="@{user.cell}"
+                       android:textStyle="bold" />
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="25dp"
+                   android:orientation="horizontal"
+                   android:paddingLeft="25dp">
+                   <ImageView
+                       android:layout_width="30dp"
+                       android:layout_height="30dp"
+                       android:src="@drawable/ic_baseline_location_on_24"/>
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_vertical"
+                       android:paddingLeft="20dp"
+                       android:text="@{user.location.street.name + ','+user.location.state +','+user.location.city+','+user.location.postcode +','+user.location.country}"
+                       android:textStyle="bold" />
+               </LinearLayout>
+
+
+           </LinearLayout>
+
+       </LinearLayout>
+   </ScrollView>
+</layout>

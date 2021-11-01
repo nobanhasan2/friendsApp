@@ -10,7 +10,7 @@ object AndroidSdk {
 }
 
 object AndroidClient {
-    const val appId = "com.example.clean_architecture_2021.core"
+    const val appId = "com.example.friendsapp.core"
     const val versionCode = 1
     const val versionName = "1.0"
     const val testRunner = "androidx.test.runner.AndroidJUnitRunner"

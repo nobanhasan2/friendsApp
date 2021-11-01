@@ -11,7 +11,9 @@ import com.example.friendsapp.core.extension.observe
 import com.example.friendsapp.core.platform.BaseFragment
 import com.example.friendsapp.core.platform.BaseVMFragment
 import com.example.friendsapp.databinding.FragmentUserlistBinding
+import com.example.friendsapp.features.home.grid.ItemClickListener
 import com.example.friendsapp.features.home.grid.UsersRecyclerViewAdapter
+import com.example.friendsapp.features.home.model.Results
 import com.example.friendsapp.features.home.model.UserResults
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_userlist.*
@@ -19,18 +21,18 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class UsersFragment: BaseVMFragment<UsersViewModel, FragmentUserlistBinding>() {
+class UsersFragment: BaseVMFragment<UsersViewModel, FragmentUserlistBinding>(),ItemClickListener {
 
 
 
-    @Inject
+
     lateinit var usersAdapter: UsersRecyclerViewAdapter
 
     private val usersViewModel by viewModels<UsersViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        usersAdapter = UsersRecyclerViewAdapter(this)
         with(usersViewModel){
             observe(userResult,::onSuccessUsers)
             failure(failure,::handleFailure)
@@ -52,6 +54,7 @@ class UsersFragment: BaseVMFragment<UsersViewModel, FragmentUserlistBinding>() {
         mBinding.rvUser.layoutManager = GridLayoutManager(activity, 2)
         mBinding.rvUser.adapter = usersAdapter
 
+
     }
 
     private fun onSuccessUsers(userResult: UserResults?) {
@@ -60,4 +63,6 @@ class UsersFragment: BaseVMFragment<UsersViewModel, FragmentUserlistBinding>() {
     }
 
     override fun getViewBinding() = FragmentUserlistBinding.inflate(layoutInflater)
+
+    override fun onItemClicked(user: Results) { navigation.userToDetails(user) }
 }
